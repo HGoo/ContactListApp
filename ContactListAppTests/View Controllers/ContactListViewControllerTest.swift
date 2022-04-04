@@ -65,6 +65,50 @@ class ContactListViewControllerTest: XCTestCase {
         XCTAssertTrue((sut.tableView as! MockTableView).isReloaded)
     }
     
+    func testTappingCellSendsNotification() {
+        let imageData = UIImage(named: "unknown")?.pngData()
+        let person = Person(name: "Foo", phone: "bar", imageData: imageData)
+        sut.dataSource.contactManager?.add(person: person)
+        
+        expectation(forNotification: NSNotification.Name("DidSelectRow notification"), object: nil) {
+            notification -> Bool in
+            guard let personFromNotification = notification.userInfo?["person"] as? Person else { return false }
+            return person == personFromNotification
+        }
+        
+        let tableView = sut.tableView
+        tableView?.delegate?.tableView!(tableView!, didSelectRowAt: IndexPath(row: 0, section: 0))
+        waitForExpectations(timeout: 1)
+        
+        
+    }
+    
+    func testSelectedCellHasShowDetailViewController() {
+        let mockNavigationController = MockavNavigationController(rootViewController:  sut)
+        UIApplication.shared.keyWindow?.rootViewController = mockNavigationController
+        
+        sut.loadViewIfNeeded()
+        
+        let imageData = UIImage(named: "unknown")?.pngData()
+        let personOne = Person(name: "Foo", phone: "Bar", imageData: imageData)
+        let personTwo = Person(name: "Bar", phone: "Baz", imageData: imageData)
+        
+        sut.dataSource.contactManager?.add(person: personOne)
+        sut.dataSource.contactManager?.add(person: personTwo)
+        
+        NotificationCenter.default.post(name: NSNotification.Name("DidSelectRow notification"),
+                                        object: self,
+                                        userInfo: ["person": personTwo])
+                                        
+        guard let detailVC = mockNavigationController.pushedViewcontroller as? DetailViewController else { XCTFail()
+            return
+        }
+        
+        detailVC.loadViewIfNeeded()
+        XCTAssertNotNil(detailVC.nameLable)
+        XCTAssertTrue(detailVC.person == personTwo)
+    }
+    
     func presentingNewContactViewController() -> NewContactViewController {
         guard
             let addNewContactButton = sut.navigationItem.rightBarButtonItem,
@@ -90,6 +134,16 @@ extension ContactListViewControllerTest {
         
         override func reloadData() {
             isReloaded = true
+        }
+    }
+    
+    
+    class MockavNavigationController: UINavigationController {
+        var pushedViewcontroller: UIViewController?
+        
+        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+            pushedViewcontroller = viewController
+            super.pushViewController(viewController, animated: animated)
         }
     }
 }

@@ -31,4 +31,13 @@ extension ContactListDataSource: UITableViewDataSource {
 
 }
 
+extension ContactListDataSource: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let person = contactManager?.person(at: indexPath.row) else { return }
+        NotificationCenter.default.post(name: Notification.Name("DidSelectRow notification"),
+                                        object: self,
+                                        userInfo: ["person": person])
+    }
+}
+
 

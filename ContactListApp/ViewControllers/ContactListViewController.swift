@@ -16,9 +16,18 @@ class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         
         let contactManager = ContactManager()
         dataSource.contactManager = contactManager
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(showDetail(withNotification:)),
+            name: NSNotification.Name("DidSelectRow notification"),
+            object: nil)
+        
+        view.accessibilityIdentifier = "mainview"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,10 +40,21 @@ class ContactListViewController: UIViewController {
         ) as? NewContactViewController {
             
             newContactVC.modalPresentationStyle = .fullScreen
-            newContactVC.presentationController?.delegate = newContactVC
             newContactVC.contacManager = dataSource.contactManager
             present(newContactVC, animated: true)
         }
+    }
+    
+    @objc func showDetail(withNotification notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let person = userInfo["person"] as? Person,
+            let detailVc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController"
+            ) as? DetailViewController
+        else { fatalError() }
+        
+        detailVc.person = person
+        navigationController?.pushViewController(detailVc, animated: true)
     }
 }
 
