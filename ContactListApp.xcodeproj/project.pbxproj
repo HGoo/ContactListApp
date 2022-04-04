@@ -22,6 +22,10 @@
 		DDBF645A27F9B58C00E65273 /* ContactListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF645927F9B58C00E65273 /* ContactListDataSourceTests.swift */; };
 		DDBF645C27F9BBDB00E65273 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF645B27F9BBDB00E65273 /* ContactCell.swift */; };
 		DDBF645F27F9D0FB00E65273 /* ContactCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF645E27F9D0FB00E65273 /* ContactCellTest.swift */; };
+		DDBF646527FB09EB00E65273 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF646427FB09EB00E65273 /* DetailViewController.swift */; };
+		DDBF646727FB0A0000E65273 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF646627FB0A0000E65273 /* NewContactViewController.swift */; };
+		DDBF646927FB0D0800E65273 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF646827FB0D0800E65273 /* DetailViewControllerTests.swift */; };
+		DDBF646B27FB16B700E65273 /* NewContactViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBF646A27FB16B700E65273 /* NewContactViewControllerTests.swift */; };
 		DDEF1FB727F74E09005F316D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEF1FB627F74E09005F316D /* Person.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,10 @@
 		DDBF645927F9B58C00E65273 /* ContactListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDataSourceTests.swift; sourceTree = "<group>"; };
 		DDBF645B27F9BBDB00E65273 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		DDBF645E27F9D0FB00E65273 /* ContactCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellTest.swift; sourceTree = "<group>"; };
+		DDBF646427FB09EB00E65273 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DDBF646627FB0A0000E65273 /* NewContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
+		DDBF646827FB0D0800E65273 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		DDBF646A27FB16B700E65273 /* NewContactViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactViewControllerTests.swift; sourceTree = "<group>"; };
 		DDEF1FB627F74E09005F316D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				DD2D0FA627F7403000F79332 /* ContactListViewController.swift */,
+				DDBF646427FB09EB00E65273 /* DetailViewController.swift */,
+				DDBF646627FB0A0000E65273 /* NewContactViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -173,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				DDBF645327F9AA7000E65273 /* ContactListViewControllerTest.swift */,
+				DDBF646827FB0D0800E65273 /* DetailViewControllerTests.swift */,
+				DDBF646A27FB16B700E65273 /* NewContactViewControllerTests.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -312,6 +324,8 @@
 				DDEF1FB727F74E09005F316D /* Person.swift in Sources */,
 				DDBF645C27F9BBDB00E65273 /* ContactCell.swift in Sources */,
 				DD2D0FA527F7403000F79332 /* SceneDelegate.swift in Sources */,
+				DDBF646727FB0A0000E65273 /* NewContactViewController.swift in Sources */,
+				DDBF646527FB09EB00E65273 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +337,9 @@
 				DDBF645427F9AA7000E65273 /* ContactListViewControllerTest.swift in Sources */,
 				DDBF645F27F9D0FB00E65273 /* ContactCellTest.swift in Sources */,
 				DDBF645A27F9B58C00E65273 /* ContactListDataSourceTests.swift in Sources */,
+				DDBF646927FB0D0800E65273 /* DetailViewControllerTests.swift in Sources */,
 				DD2D0FC327F7411D00F79332 /* ContactListAppTests.swift in Sources */,
+				DDBF646B27FB16B700E65273 /* NewContactViewControllerTests.swift in Sources */,
 				DDBF644F27F99C8C00E65273 /* ContactManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

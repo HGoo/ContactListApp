@@ -16,6 +16,25 @@ class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
+        
+        let contactManager = ContactManager()
+        dataSource.contactManager = contactManager
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    @IBAction func addNewContact(_ sender: UIBarButtonItem) {
+        if let newContactVC = storyboard?.instantiateViewController(    withIdentifier: "NewContactViewController"
+        ) as? NewContactViewController {
+            
+            newContactVC.modalPresentationStyle = .fullScreen
+            newContactVC.presentationController?.delegate = newContactVC
+            newContactVC.contacManager = dataSource.contactManager
+            present(newContactVC, animated: true)
+        }
     }
 }
 
